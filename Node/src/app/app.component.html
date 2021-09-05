@@ -1,0 +1,37 @@
+<div *ngIf="!userService.isLoged">
+  Nejste přihlášeni.
+</div>
+<div *ngIf="userService.isLoged">
+  Vítej, {{ userService.currentUser.Name }} {{ userService.currentUser.Surname }}.
+</div>
+
+<app-post *ngFor="let post of posts" [post]="post"></app-post>
+
+<div *ngIf="!userService.isLoged">
+  <h4>Přihlášení</h4>
+  <label for="email">Email</label>
+  <input id="email" type="email" [(ngModel)]="email">
+  <br>
+  <label for="password">Heslo</label>
+  <input id="password" type="password" [(ngModel)]="password">
+  <br>
+  <button (click)="login()">Přihlásit</button>
+  
+  <h4>Registrace</h4>
+  <label for="r-email">Email</label>
+  <input id="r-email" type="email" [(ngModel)]="remail">
+  <br>
+  <label for="name">Jméno</label>
+  <input id="name" type="text" [(ngModel)]="rname">
+  <br>
+  <label for="surname">Příjmení</label>
+  <input id="surname" type="text" [(ngModel)]="rsurname">
+  <br>
+  <label for="r-password">Heslo</label>
+  <input id="r-password" type="password" [(ngModel)]="rpassword">
+  <br>
+  <label for="r-avatar">Avatar</label>
+  <input id="r-avatar" type="file" (change)="handleFile($event)">
+  <br>
+  <button (click)="register()">Registrovat</button>
+</div>

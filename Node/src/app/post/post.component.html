@@ -1,0 +1,10 @@
+<h3>{{ safePost.Title }}</h3>
+<p>{{ safePost.Content }}</p>
+<button *ngIf="!showComments" (click)="getComments()">Zobrazit komentáře</button>
+<div *ngIf="showComments">
+    <app-comment *ngFor="let comment of comments" [comment]="comment" (like)="likeComment($event)"></app-comment>
+    <ng-template [ngIf]="userService.isLoged">
+        <textarea [(ngModel)]="newComment"></textarea>
+        <button (click)="sendComment()">Odeslat</button>
+    </ng-template>
+</div>

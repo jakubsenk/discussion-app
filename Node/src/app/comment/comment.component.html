@@ -1,0 +1,8 @@
+<div class="comment" [class.my]="isMyComment">
+    <img [src]="fileService.base64ToDataURL(safeComment.UserAvatar)">
+    <div class="content">
+        <b>{{ safeComment.Username }}</b>
+        <div>{{ safeComment.Content }}</div>
+        <div class="likes" (click)="onLikeClick()">{{ safeComment.Likes }} 👍</div>
+    </div>
+</div>
